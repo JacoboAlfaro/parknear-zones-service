@@ -8,10 +8,13 @@ import { RolesGuard } from './auth/guards/roles.guard';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     ZonasModule,
 
     JwtModule.registerAsync({
+      imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
         const expiresIn = '1h';
@@ -29,7 +32,6 @@ import { RolesGuard } from './auth/guards/roles.guard';
   ],
   controllers: [],
   providers: [
-    AppService,
     JwtStrategy,
     RolesGuard,
   ],
