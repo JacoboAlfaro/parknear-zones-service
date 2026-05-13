@@ -1,7 +1,6 @@
 export class CreateZonaDto {
-  id!: number;
-  latitud!: number;
-  longitud!: number;
+  latitud!: number | string;
+  longitud!: number | string;
   indicaciones!: string;
   capacidad!: number;
   capacidad_total!: number;
